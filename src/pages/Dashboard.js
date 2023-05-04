@@ -9,13 +9,16 @@ import {
   likePost,
   dislikePost,
 } from '../lib/firebase.js';
+import vaca2 from '../img/vaca2.png';
+import imgAlien from '../img/imgAlienDashboard.png';
+import ovni from '../img/ovni.gif';
 
 const Dashboard = (navigateTo) => {
   const viewDashboard = `
     <div id="headerDashboard">
       <h1 class="tittle-dashboard">Frikis Del Espacio</h1>
       <article id= "LogOut">
-        <img id="logoSignOut" src= "./img/vaca2.png" alt="Imagen  "/>
+        <img id="logoSignOut" src= "${vaca2}" alt="Imagen  "/>
         <button id ="button-signOut">Cerrar Sesión</button>
       </article>
     </div>
@@ -24,7 +27,7 @@ const Dashboard = (navigateTo) => {
     <div id="profile">
     <div id="circleAlien">
       <div id= "circleAlien2">
-        <img id="imgAlien" src= "./img/imgAlienDashboard.png" alt="Imagen de Alien "/>
+        <img id="imgAlien" src= "${imgAlien}" alt="Imagen de Alien "/>
       </div>
     </div>
     <span id= "userName"> Gabriela79 </span>
@@ -42,7 +45,7 @@ const Dashboard = (navigateTo) => {
       <div class="box-gradient">
         <div id="postPublic">
           <span class="loading">Cargando...</span>
-          <img id="ovniL" src= "./img/ovni.gif" alt="Ovni girando"/>
+          <img id="ovniL" src= "${ovni}" alt="Ovni girando"/>
         </div>
       </div>    
     </div>
@@ -64,14 +67,15 @@ const Dashboard = (navigateTo) => {
   const msgPosT = mainDashboard.querySelector('#msg-post');
   const btnPost = mainDashboard.querySelector('#button-post');
   const containerPost = mainDashboard.querySelector('#containerPosts');
+  // El modal para pedir confirmación para borrar un post propio.
   const myModal = mainDashboard.querySelector('#myModal');
   const not = mainDashboard.querySelector('#not');
   const yes = mainDashboard.querySelector('#yes');
   not.addEventListener('click', () => {
     myModal.style.display = 'none';
   });
+  // Email recortado para que sea el nombre de usuario.
   let emailCutted;
-
   const cutted = (user) => {
     const emailName = user.email;
     const emailAt = emailName.search('@');
@@ -92,8 +96,10 @@ const Dashboard = (navigateTo) => {
 
   let editStatus = false;
   let id = '';
-  // savePost();
-  gettingPosts((posts) => {
+  // savePost(); Es una función que recibe un
+  // callback donde vamos a recibir los posts
+  // para iterarlos
+  gettingPosts((posts) => { // Recibe un array de posts
     const postTemplates = posts.map((post) => {
       const dataPost = post.data();
       console.log(dataPost);
@@ -121,7 +127,7 @@ const Dashboard = (navigateTo) => {
       return taskContainerPost;
     });
 
-    containerPost.innerHTML = postTemplates.join('');
+    containerPost.innerHTML = postTemplates.join(''); // porque devuelve un template
 
     // array de strings
     const btnsDelete = containerPost.querySelectorAll('.btn-delete');

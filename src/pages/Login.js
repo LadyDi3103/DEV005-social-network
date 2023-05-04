@@ -1,18 +1,20 @@
 import { buttonLoginG } from '../lib/LoginGoogle';
 import { buttonLogin } from '../lib/LoginEmail';
+import logo from '../img/vaca1_480.png';
+import google from '../img/google.png';
 
-const Login = (navigateTo) => {
+const Login = (navigateTo) => { // parámetro
   const viewLogin = `
     <h1 id="tittleLogo-2">Frikis del Espacio</h1>
-    <img id="logo-2" src= "./img/vaca1_480.png" alt="Imagen del logo"/>  
+    <img id="logo-2" src="${logo}" alt="Imagen del logo"/>  
       <div class="login-view">
         <div id="container-logo">
-          <img src="./img/vaca1_480.png" alt="Imagen del Logo" id="logo" />
+          <img src="${logo}" alt="Imagen del Logo" id="logo" />
           <h1 class="tittle-login" id="title">Frikis Del Espacio</h1>
         </div>
         <div class="container-login">
           <button id="button-google" class="btn">
-            <img src="./img/google.png" alt="Imagen de Google" id="logo-google" />
+            <img src="${google}" alt="Imagen de Google" id="logo-google" />
             Continúa con Google
           </button>
           <div id="bars">
@@ -52,6 +54,7 @@ const Login = (navigateTo) => {
   const errorEmail = mainLogin.querySelector('#errorEmail');
   const errorPassword = mainLogin.querySelector('#errorPassword');
 
+  // Enmascarar y desenmascarar el password haciendo click al ícono
   const iconEye = mainLogin.querySelector('.icon-eye');
   iconEye.addEventListener('click', () => {
     const icon = iconEye.querySelector('i');
@@ -66,21 +69,22 @@ const Login = (navigateTo) => {
       icon.classList.add('fa-eye-slash');
     }
   });
-  // ---
+  // Se transforma los mensajes de error de Firebase y se muestra en pantalla
   buttonLog.addEventListener('click', (event) => {
-    event.preventDefault();
+    event.preventDefault(); // evita de que se recarge la función de submit en formulario.
     const passwordValue = password.value;
     const emailValue = mail.value;
-    if (emailValue === '' && passwordValue === '') {
+    if (emailValue === '' && passwordValue === '') { // Validaciones
       errorEmail.style.visibility = 'visible';
       errorEmail.textContent = 'Es un campo obligatorio';
       errorPassword.style.visibility = 'visible';
       errorPassword.textContent = 'Es un campo obligatorio';
-      setTimeout(() => {
+      setTimeout(() => { // Para que los mensajes de error se muestren por 5 segundos
         errorEmail.style.visibility = 'hidden';
         errorPassword.style.visibility = 'hidden';
       }, 5000);
     }
+    // función y 2arg - Valido que el usuario esté en la base de datos de firebase al darle click
     buttonLogin(passwordValue, emailValue)
       .then((user) => {
         console.log(user.nameUser);
@@ -128,10 +132,10 @@ const Login = (navigateTo) => {
           }, 5000);
         }
       });
-    formLogin.reset();
+    formLogin.reset(); // Limpio el formulario
   });
 
   buttonLoginG(btnGoogle, navigateTo);
-  return mainLogin;
+  return mainLogin; // es el div contenedor de la estructura html
 };
 export default Login;

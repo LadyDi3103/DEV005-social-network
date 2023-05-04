@@ -1,8 +1,9 @@
-import { onAuthStateChanged } from 'firebase/auth';
+import { onAuthStateChanged } from 'firebase/auth'; // El escucha
 import {
   savePost, auth, onGetPosts,
 } from './firebase';
 
+// Recorta el email hasta el @ para usarlo como nombre de usuario.
 export const idUser = () => {
   const userID = [];
   onAuthStateChanged(auth, (user) => {
@@ -11,21 +12,22 @@ export const idUser = () => {
     const emailCutted = emailName.slice(0, emailAt);
     userID.push(emailCutted);
   });
-  return userID;
+  return userID; // retorna el email Recortado
 };
 
+//
 export const gettingPosts = (callback) => {
-  onGetPosts((querySnapshot) => {
+  onGetPosts((querySnapshot) => { // ejecuta un callback el cual va a recibir los posts.
     // const querySnapshot = getPost();
-    const data = [];
-    querySnapshot.forEach((doc) => {
+    const data = []; // se guarda en data
+    querySnapshot.forEach((doc) => { // itera
       data.push(doc);
     });
-    callback(data);
+    callback(data); // luego esa data se manda como argumento al callback
   });
 };
 
-// guardar en firebase
+// guardar en firebase fecha, los likes, el post
 export const savePostFire = async (textArea) => {
   const idUserPost = await idUser();
   const idUserPostSave = idUserPost[0];

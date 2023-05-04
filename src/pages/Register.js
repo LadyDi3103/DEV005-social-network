@@ -1,15 +1,17 @@
 import { buttonLoginG } from '../lib/LoginGoogle';
 import { buttonRegister } from '../lib/RegisterEmail';
+import logo2 from '../img/vaca1_480.png';
+import google from '../img/G.png';
 
 const Register = (navigateTo) => {
   const viewRegister = `
   <h1 id="tittleLogo-2">Frikis del Espacio</h1>
-  <img id="logo-2" src= "./img/vaca1_480.png" alt="Imagen del logo"/>  
+  <img id="logo-2" src="${logo2}" alt="Imagen del logo"/>  
     <div class="register">
       <h1 class="tittleFrikis">Frikis Del Espacio</h1>
-      <img class="logoSmall" src="./img/vaca1_480.png" alt="Vaca abducida por alien"/>
+      <img class="logoSmall" src="${logo2}" alt="Vaca abducida por alien"/>
       <div class="container-register">
-        <button class="btnG"><img src="./img/G.png" alt="Ícono de google"/><span>Continúa con Google</span></button>
+        <button class="btnG"><img src="${google}" alt="Ícono de google"/><span>Continúa con Google</span></button>
         <p class="or"><span class="line"></span><span>o</span><span class="line"></span></p>
         <form id=formRegister>
           <label for="inputEmail">EMAIL</label>
@@ -41,7 +43,7 @@ const Register = (navigateTo) => {
   const btnGoogle = mainRegister.querySelector('.btnG');
   const errorEmail = mainRegister.querySelector('#errorEmail');
   const errorPassword = mainRegister.querySelector('#errorPassword');
-
+  // Enmascarar y desenmascarar la contraseña
   const iconEye = mainRegister.querySelector('.icon-eye');
   iconEye.addEventListener('click', () => {
     const icon = iconEye.querySelector('i');
@@ -56,7 +58,7 @@ const Register = (navigateTo) => {
       icon.classList.add('fa-eye-slash');
     }
   });
-  // ----
+  // Validar campos de email y password del form Register para mostrar errores en pantalla
   btnRegister.addEventListener('click', (event) => {
     event.preventDefault();
     const passwordValue = inputPassword.value;
@@ -71,6 +73,7 @@ const Register = (navigateTo) => {
         errorPassword.style.visibility = 'hidden';
       }, 5000);
     }
+    // Llamo a la función buttonRegister
     buttonRegister(passwordValue, emailValue)
       .then((user) => {
         console.log(user.nameUser);

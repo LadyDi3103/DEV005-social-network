@@ -7,10 +7,10 @@ export const buttonLogin = (passwordValue, emailValue) => new Promise((resolve, 
     .then((userCredential) => {
       // Signed in
       const user = userCredential.user;
-      resolve({ nameUser: user });
+      resolve({ nameUser: user }); // se resuelve la promesa
     })
     .catch((error) => {
       const errorCode = error.code;
-      reject(errorCode);
+      reject(errorCode); // errores de firebase al hacer loggin
     });
 });
