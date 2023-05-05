@@ -5,6 +5,8 @@ import Register from '../../src/pages/Register.js';
 import * as lgnGoogle from '../../src/lib/LoginGoogle.js';
 import * as btnRegis from '../../src/lib/RegisterEmail.js';
 
+jest.mock('../../src/images.js', () => {});
+
 describe('Register', () => {
   it('Debería ser una función', () => {
     expect(typeof Register).toBe('function');

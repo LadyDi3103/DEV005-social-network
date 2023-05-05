@@ -1,6 +1,7 @@
 import Footer from '../templates/Footer';
-import logoAlien from '../img/404logo.png';
-import AlienLuna from '../img/imgLuna.png';
+// import logoAlien from '../img/404logo.png';
+// import AlienLuna from '../img/imgLuna.png';
+import { logoAlien, AlienLuna } from '../images.js';
 
 const Error404 = () => {
   const viewError = `

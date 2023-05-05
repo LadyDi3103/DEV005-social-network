@@ -9,9 +9,10 @@ import {
   likePost,
   dislikePost,
 } from '../lib/firebase.js';
-import vaca2 from '../img/vaca2.png';
-import imgAlien from '../img/imgAlienDashboard.png';
-import ovni from '../img/ovni.gif';
+// import vaca2 from '../img/vaca2.png';
+import { vaca2, imgAlien, ovni } from '../images.js';
+// import imgAlien from '../img/imgAlienDashboard.png';
+// import ovni from '../img/ovni.gif';
 
 const Dashboard = (navigateTo) => {
   const viewDashboard = `

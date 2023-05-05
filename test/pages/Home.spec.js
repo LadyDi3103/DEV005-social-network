@@ -2,6 +2,9 @@
  * @jest-environment jsdom
  */
 import Home from '../../src/pages/Home.js';
+// ignorar todas las importaciones de ese archivo
+// reemplazar las imágenes.. tb sirve para reemplazar funciones.
+jest.mock('../../src/images.js', () => {});
 
 describe('Home', () => {
   it('debería ser una función', () => {

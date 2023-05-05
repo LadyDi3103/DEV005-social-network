@@ -1,5 +1,5 @@
-import cat from '../img/github.png';
-
+import cat from '../images.js';
+// import cat from '../img/github.png';
 const Footer = () => {
   const viewFooter = `
     <img src="${cat}" alt="Logo de Github"/>

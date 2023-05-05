@@ -1,8 +1,9 @@
 import { buttonLoginG } from '../lib/LoginGoogle';
 import { buttonLogin } from '../lib/LoginEmail';
-import logo from '../img/vaca1_480.png';
-import google from '../img/google.png';
+// import logo from '../img/vaca1_480.png';
+import { logo, google } from '../images.js'; // No corre
 
+// import vaca from '../images.js';
 const Login = (navigateTo) => { // parámetro
   const viewLogin = `
     <h1 id="tittleLogo-2">Frikis del Espacio</h1>

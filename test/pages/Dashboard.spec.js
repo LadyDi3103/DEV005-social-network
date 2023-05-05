@@ -9,6 +9,7 @@ import { deletePost } from '../../src/lib/firebase.js';
 
 jest.mock('../../src/lib/firebase.js');
 jest.mock('firebase/auth');
+jest.mock('../../src/images.js', () => {});
 
 describe('Dashboard', () => {
   it('Debería ser una función', () => {

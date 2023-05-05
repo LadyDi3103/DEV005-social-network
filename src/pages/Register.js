@@ -1,7 +1,8 @@
 import { buttonLoginG } from '../lib/LoginGoogle';
 import { buttonRegister } from '../lib/RegisterEmail';
-import logo2 from '../img/vaca1_480.png';
-import google from '../img/G.png';
+// import logo2 from '../img/vaca1_480.png';
+import { logo2, google } from '../images.js';
+// import google from '../img/G.png';
 
 const Register = (navigateTo) => {
   const viewRegister = `

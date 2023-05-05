@@ -5,6 +5,8 @@ import Login from '../../src/pages/Login.js';
 import * as lgnGoogle from '../../src/lib/LoginGoogle.js';
 import * as btnLogin from '../../src/lib/LoginEmail.js';
 
+jest.mock('../../src/images.js', () => {});
+
 describe('Login', () => {
   it('Debería ser una función', () => {
     expect(typeof Login).toBe('function');
