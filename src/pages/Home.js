@@ -1,5 +1,6 @@
-import vaca from '../images.js';
+import { vaca } from '../images.js';
 
+// sin llaves es  dame lo que exportes x default y lo llamo vaca
 const Home = (navigateTo) => {
   const viewHome = `
     <h1 id="tittleLogo">Frikis del Espacio</h1>

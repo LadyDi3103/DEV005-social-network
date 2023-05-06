@@ -5,7 +5,9 @@ import Login from '../../src/pages/Login.js';
 import * as lgnGoogle from '../../src/lib/LoginGoogle.js';
 import * as btnLogin from '../../src/lib/LoginEmail.js';
 
-jest.mock('../../src/images.js', () => {});
+jest.mock('../../src/images.js', () => ({
+  vaca: '', cat: '', logoAlien: '', AlienLuna: '', google: '', vaca2: '', imgAlien: '',
+}));
 
 describe('Login', () => {
   it('Debería ser una función', () => {

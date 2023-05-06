@@ -1,4 +1,4 @@
-import cat from '../images.js';
+import { cat } from '../images.js';
 // import cat from '../img/github.png';
 const Footer = () => {
   const viewFooter = `

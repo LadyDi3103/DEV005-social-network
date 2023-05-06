@@ -4,7 +4,9 @@
 import Home from '../../src/pages/Home.js';
 // ignorar todas las importaciones de ese archivo
 // reemplazar las imágenes.. tb sirve para reemplazar funciones.
-jest.mock('../../src/images.js', () => {});
+jest.mock('../../src/images.js', () => ({
+  vaca: '', cat: '', logoAlien: '', AlienLuna: '', google: '', vaca2: '', imgAlien: '',
+}));
 
 describe('Home', () => {
   it('debería ser una función', () => {

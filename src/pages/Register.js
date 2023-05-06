@@ -1,16 +1,16 @@
 import { buttonLoginG } from '../lib/LoginGoogle';
 import { buttonRegister } from '../lib/RegisterEmail';
-// import logo2 from '../img/vaca1_480.png';
-import { logo2, google } from '../images.js';
+// import vaca from '../img/vaca1_480.png';
+import { vaca, google } from '../images.js';
 // import google from '../img/G.png';
 
 const Register = (navigateTo) => {
   const viewRegister = `
   <h1 id="tittleLogo-2">Frikis del Espacio</h1>
-  <img id="logo-2" src="${logo2}" alt="Imagen del logo"/>  
+  <img id="logo-2" src="${vaca}" alt="Imagen del logo"/>  
     <div class="register">
       <h1 class="tittleFrikis">Frikis Del Espacio</h1>
-      <img class="logoSmall" src="${logo2}" alt="Vaca abducida por alien"/>
+      <img class="logoSmall" src="${vaca}" alt="Vaca abducida por alien"/>
       <div class="container-register">
         <button class="btnG"><img src="${google}" alt="Ícono de google"/><span>Continúa con Google</span></button>
         <p class="or"><span class="line"></span><span>o</span><span class="line"></span></p>

@@ -10,7 +10,7 @@ import {
   dislikePost,
 } from '../lib/firebase.js';
 // import vaca2 from '../img/vaca2.png';
-import { vaca2, imgAlien, ovni } from '../images.js';
+import { vaca2, imgAlien, logoAlien } from '../images.js';
 // import imgAlien from '../img/imgAlienDashboard.png';
 // import ovni from '../img/ovni.gif';
 
@@ -46,7 +46,7 @@ const Dashboard = (navigateTo) => {
       <div class="box-gradient">
         <div id="postPublic">
           <span class="loading">Cargando...</span>
-          <img id="ovniL" src= "${ovni}" alt="Ovni girando"/>
+          <img id="ovniL" src= "${logoAlien}" alt="Ovni girando"/>
         </div>
       </div>    
     </div>
@@ -72,9 +72,9 @@ const Dashboard = (navigateTo) => {
   const myModal = mainDashboard.querySelector('#myModal');
   const not = mainDashboard.querySelector('#not');
   const yes = mainDashboard.querySelector('#yes');
-  not.addEventListener('click', () => {
-    myModal.style.display = 'none';
-  });
+  // not.addEventListener('click', () => {
+  //   myModal.style.display = 'none';
+  // });
   // Email recortado para que sea el nombre de usuario.
   let emailCutted;
   const cutted = (user) => {
@@ -115,7 +115,7 @@ const Dashboard = (navigateTo) => {
               <i class="fa-solid fa-pencil"></i>
             </button>
             <button class="btn-delete icon-trash" data-id="${post.id}" data-user ="${dataPost.idUser}">
-              <i class="fa-solid fa-trash-can"></i>
+              <i class="fa-solid fa-trash-can" data-id= "${post.id}"></i>
             </button>
             <button class="btn-like icon-star" data-id="${post.id}">
               <span class="counterLikes" data-id="${post.id}">${dataPost.likes.length}</span>
@@ -133,14 +133,21 @@ const Dashboard = (navigateTo) => {
     // array de strings
     const btnsDelete = containerPost.querySelectorAll('.btn-delete');
     btnsDelete.forEach((btn) => {
-      btn.addEventListener('click', () => {
-        const idPost2 = btn.dataset.id;
+      // Corrigiendo el bug Observación Coach Sebastian
+      btn.addEventListener('click', (event) => {
+        const idPost2 = event.target.dataset.id;
         myModal.style.display = 'block';
-        yes.addEventListener('click', () => {
+        const deleting = () => {
           deletePost(idPost2);
           myModal.style.display = 'none';
+        };
+        yes.addEventListener('click', deleting, true);
+        not.addEventListener('click', () => {
+          myModal.style.display = 'none';
+          yes.removeEventListener('click', deleting, true);
         });
       });
+      // --------------------
       const btnDeleteUser = btn.dataset.user;
       if (userAuthor(btnDeleteUser)) {
         btn.style.display = 'block';
